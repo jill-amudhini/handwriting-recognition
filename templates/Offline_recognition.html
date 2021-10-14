@@ -1,0 +1,154 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/offline.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+  <title>Offine Recognition</title>
+
+  <style>
+    .con {
+      background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+      border: none;
+      color: #FFFFFF;
+      padding: 15px 32px;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      font-size: 25px;
+      cursor: pointer;
+      margin: auto;
+      position: absolute;
+      top: 75%;
+      right: 50%;
+      box-shadow: 5px 5px 5px #511204;
+      width: 22%;
+      height: 20%;
+      font-family: 'Merienda One', Helvetica, sans-serif;
+    }
+
+    .con1 {
+      background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+      border: none;
+      color: #FFFFFF;
+      padding: 15px 32px;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      font-size: 25px;
+      cursor: pointer;
+      margin: auto;
+      position: absolute;
+      top: 75%;
+      right: 20%;
+      box-shadow: 5px 5px 5px #511204;
+      width: 22%;
+      height: 20%;
+      font-family: 'Merienda One', Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <heading1>Offline Recognition</heading1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#">OFFLINE RECOGNITION</a></li>
+      <li><a href="online">ONLINE RECOGNITION</a></li>
+      <li><a href="translator">TRANSLATOR</a></li>
+      <li><a href="about">ABOUT</a></li>
+    </ul>
+  </nav>
+
+
+  <div class="wrap">
+    <div class="box1 shadow1">
+      <h3>
+        <img id='preview' class="imgbox">
+        <button id="bt1">Select an image</button>
+
+        <input type='file' id='file-input' name='file-input' hidden>
+    </div>
+
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+    </h3>
+  </div>
+  <div class="middle">
+
+    <form method="POST" action="">
+      <input type="text" name="imgcode" id="imgcode" style="position: absolute; top: 30px;">
+      <input type="submit" name='convert' class="btn btn3" value="Convert to text">
+    </form>
+  </div>
+
+  <div class="box2 shadow2">
+    <h3>
+      <form method="GET" action="">
+        <input type="text" textarea placeholder="The converted content is shown as the output" id="text" name="text" rows="4"
+          style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px;" value="{{msg}}">
+        <br>
+        <input class="con" id="download" type="button" value="Download">
+        <input class="con1" id="translate" type="submit" value="Translate">
+
+      </form>
+    </h3>
+  </div>
+
+
+
+  <script src="{{ url_for('static',filename='js/offline.js') }}"> </script>
+  <script>
+    function download(filename, text) {
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', filename);
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    }
+
+    document.getElementById("download").addEventListener("click", function () {
+      var text = document.getElementById("text").value;
+      var filename = "Offline Recognition Result";
+      download(filename, text);
+    }, false);
+
+
+    var input = document.querySelector("#file-input");
+
+    document.querySelector("#bt1").addEventListener("click", function () {
+      input.click();
+    });
+
+    input.addEventListener("change", preview);
+    function preview() {
+      var fileObject = this.files[0];
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(fileObject);
+      fileReader.onload = function () {
+        var result = fileReader.result;
+        var img1 = document.querySelector("#preview");
+        img1.setAttribute("src", result);
+        document.getElementById("imgcode").value = result;
+
+      };
+    }
+
+  </script>
+</body>
+
+</html>

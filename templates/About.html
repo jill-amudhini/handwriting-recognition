@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/offline.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+  <title>ABOUT</title>
+</head>
+
+<body>
+  <header>
+    <div class="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <heading1>ABOUT</heading1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="offline">OFFLINE RECOGNITION</a></li>
+      <li><a href="online">ONLINE RECOGNITION</a></li>
+      <li><a href="translator">TRANSLATOR</a></li>
+      <li><a href="#">ABOUT</a></li>
+    </ul>
+  </nav>
+  <div>
+    <br><br>
+    <center><h1>ABOUT</h1></center>
+    <br>
+    <p style="font-size: 20px; text-align: justify;">Handwriting recognition is a challenging field which involves complex mechanisms and advanced machine learning concepts. This project was inspired by the fact that even though the world is moving towards a digital arena, people prefer writing down stuffs and writing activates the thinking part of the brain. Data can’t be fetched at the eleventh hour due to the nick of time and hence the data needs to be structured and organised. Our project will help in converting the unstructured handwritten text into a machine encoded form. To facilitate the above process a CNN model is developed with an accuracy of 86.4%.The above model uses basic concepts of neural networks ,logistic regression and activation functions like sigmoid, RELU ,etc. The model is integrated with the user interface using a flask web framework .The product facilitates both offline and online recognition. In addition to the above feature translate and download option is provided using which the user can download the script or translate the test to their preferred language. Handwriting recognition is a rising and a flourishing sector.</p>
+    <h2>Product by: P.K.Amudhini &nbsp&nbspS.Divyashree&nbsp&nbspA.Shalini</h2>
+    
+  </div>
+  <script src="{{ url_for('static',filename='js/offline.js') }}"> </script>
+  </body>
+
+</html>

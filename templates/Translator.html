@@ -1,0 +1,252 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/translator.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+  <title>Translator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #3e4444;
+      display: flex;
+      height: 90px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: white;
+      z-index: 1;
+      overflow-x: hidden;
+    }
+
+    heading1 {
+      margin-right: 2%;
+      font: 400 50px/1.2 'Merienda One', Helvetica, sans-serif;
+      text-shadow: 3px 3px 3px #fff;
+      color: #ffffff;
+      text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .burger {
+      padding-left: 15px;
+      cursor: pointer;
+    }
+
+    .burger div {
+      width: 30px;
+      height: 2px;
+      background-color: white;
+      margin: 5px;
+    }
+
+    nav {
+      height: 100%;
+      position: fixed;
+      z-index: 1;
+      overflow-x: hidden;
+      top: 90px;
+      height: calc(100vh - 50px);
+      left: -250px;
+      width: 250px;
+      transition: 0.5s ease-in-out;
+      background-color: #3e4444;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      height: 80px;
+      margin-top: 5%;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav li {
+      padding: 20px;
+    }
+
+    li a {
+      text-decoration: none;
+      color: white;
+    }
+
+    h2,
+    p,
+    img {
+      display: block;
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+
+    .wrap {
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      width: 60%;
+    }
+
+    /* Converted text ---------*/
+    .box2 {
+      background-color: #9EEBBF;
+      width: 90%;
+      height: 200px;
+      margin-left: 5%;
+      margin-top: 3%;
+      border-radius: 5px;
+    }
+
+    .shadow2 {
+      position: relative;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+
+    }
+
+    /*****************************************************************dashed border
+  ****************************************************************/
+    .shadow2 h3 {
+      position: relative;
+      width: 95%;
+      height: 90%;
+      top: 5%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px dashed #db6464;
+      border-radius: 5px;
+    }
+
+    /****************************************************************
+  *styling shadows
+  ****************************************************************/
+    .shadow2:before,
+    .shadow2:after {
+      position: absolute;
+      content: "";
+      top: 14px;
+      bottom: 14px;
+      left: 0;
+      right: 0;
+      box-shadow: 0 0 25px 3px #548E7F;
+      border-radius: 100px/10px;
+      z-index: -1;
+    }
+
+
+    /* Text Box ----------*/
+    #paper {
+      color: #FFF;
+      font-size: 20px;
+    }
+
+    #margin {
+      margin-left: 10px;
+      margin-bottom: 20px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+
+    #text {
+      width: 760px;
+      overflow: hidden;
+      color: #222;
+      font-family: Courier, monospace;
+      font-weight: normal;
+      font-size: 24px;
+      resize: none;
+      line-height: 40px;
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 45px;
+      padding-bottom: 34px;
+
+      margin-top: 10px;
+      margin-left: 2%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <heading1>Translator</heading1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="offline">OFFLINE RECOGNITION</a></li>
+      <li><a href="online">ONLINE RECOGNITION</a></li>
+      <li><a href="#">TRANSLATOR</a></li>
+      <li><a href="about">ABOUT</a></li>
+    </ul>
+  </nav>
+
+  <form id="paper" method="POST" action="">
+    <div class="wrap">
+
+      <div class="box2 shadow2">
+        <h3>
+          <textarea placeholder="Type something here" id="text" name="inputtext" rows="4"
+            style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; ">{{fromtext}}</textarea>
+          <br>
+        </h3>
+      </div>
+
+      <br>
+      <input list="langs" name="From" placeholder="Translate From" value="English" id="s1">
+
+      <input list="langs" name="To" placeholder="Translate To" id="s1">
+
+      <datalist id="langs">
+        <option value="Dutch">
+        <option value="English">
+        <option value="French">
+        <option value="German">
+        <option value="Gujarati">
+        <option value="Hindi">
+        <option value="Italian">
+        <option value="Japanese">
+        <option value="Kannada">
+        <option value="Korean">
+        <option value="Malayalam">
+        <option value="Russian">
+        <option value="Chinese">
+        <option value="Spanish">
+        <option value="Tamil">
+        <option value="Telugu">
+        <option value="Urdu">
+      </datalist>
+
+      <input type="submit" value="Translate" class="btn btn3">
+    </div>
+  </form>
+  <div class="wrap">
+
+    <div class="box2 shadow2">
+      <h3>
+        <form id="paper" method="get" action="">
+          <textarea placeholder="Translated output" id="text" name="outputtext" rows="4"
+            style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; ">{{totext}}</textarea>
+          <br>
+
+        </form>
+      </h3>
+    </div>
+
+  </div>
+
+  <script src="{{ url_for('static',filename='js/Translator.js') }}"> </script>
+</body>
+
+</html>
